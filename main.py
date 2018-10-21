@@ -21,7 +21,7 @@ def drive(leftSpeed, rightSpeed, time):
 
 
 def main():
-
+    print "Running Code"
     s.servoinit()
    # print "Square"
 
