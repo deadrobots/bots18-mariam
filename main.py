@@ -6,7 +6,17 @@ import Servo as s
 rMotorPort=0
 lMotorPort=3
 
-def drive(leftSpeed, rightSpeed, time):
+# Great job on beginning to break up your code into separate files, Mariam.
+# I would suggest the following format:
+# constants.py (holds your constants!)
+# actions.py  (contains collections of motor and servo commands to perform an action. EX: grabCan() )
+# servo.py (just holds servo related functions. Not motor commands, generally)
+# motors.py (just holds your motor commands. drive(), driveTimed(), driveUntilBlackLine(), stuff like that.)
+# main.py (where everything starts!)
+# You're off to a great start on this.
+# -LMB
+
+def drive(leftSpeed, rightSpeed, time): # Duplicate function (found one in Servo.py) -LMB
     if rightSpeed < 0:
         rightSpeed = rightSpeed + 2
     else:

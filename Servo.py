@@ -20,7 +20,7 @@ low = 1277
     #MIDDLE:1662
     #LOW: 1277
 
-def drive(leftSpeed, rightSpeed, time):
+def drive(leftSpeed, rightSpeed, time): # Probably should be in a different location. motors.py maybe? -LMB
     if rightSpeed < 0:
         rightSpeed = rightSpeed + 2
     else:
@@ -36,6 +36,10 @@ def servoinit():
     set_servo_position(horizontalServo, 584)
     set_servo_position(verticalServo, 1509)
 
+	# Careful. By placing the msleep() function after the drive() function, your servos are moving 
+	# while your robot is driving. The set_servo_position() function needs time to get the servo
+	# to where it needs to be. However, your drive() function is kinda doing that (msleep is called
+	# within your drive function). This can cause unexpected behavior. Reorder these. -LMB
     set_servo_position(horizontalServo, Open)
     drive(100, 100, 150)
     msleep(1000)
