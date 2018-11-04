@@ -21,4 +21,3 @@ clawClose = 1000
 armHigh = 1900
 armMiddle = 1520
 armLow = 1277
-

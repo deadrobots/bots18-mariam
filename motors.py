@@ -15,6 +15,7 @@ def drive(leftSpeed, rightSpeed, time):
     msleep(time)
     ao()
 
+
 def lineFollow():
     while True:
         if analog(c.tophatPort)< 1000:
