@@ -4,16 +4,21 @@ import motors as m
 import actions as a
 import constants as c
 
+#Ports
 rMotorPort = 0
 lMotorPort = 3
 
 verticalServo = 3
 horizontalServo = 2
 
+tophatPort=0
+etPort=5
 
 #Servo Values
-Open = 0
-Close = 1000
-high = 2047
-middle = 1520
-low = 1277
+clawOpen = 100
+clawMiddle=550
+clawClose = 1000
+armHigh = 1900
+armMiddle = 1520
+armLow = 1277
+

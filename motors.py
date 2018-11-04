@@ -15,3 +15,13 @@ def drive(leftSpeed, rightSpeed, time):
     msleep(time)
     ao()
 
+def lineFollow():
+    while True:
+        if analog(c.tophatPort)< 1000:
+            motor(c.lMotorPort, 75)
+            motor(c.rMotorPort, 0)
+        else:
+            motor(c.lMotorPort, 0)
+            motor(c.rMotorPort, 75)
+
+
