@@ -7,9 +7,10 @@ import actions as a
 import constants as c
 
 
-#To Do:
+# To Do:
     #Line follow until robot detects a soda can and pick it up
     #Camera code
+# HW:
     #Bumpy
 
 def main():
