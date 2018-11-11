@@ -3,6 +3,7 @@ import servo as s
 import motors as m
 import actions as a
 import constants as c
+import camera as cc
 
 
 def servoInit():

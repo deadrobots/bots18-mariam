@@ -5,16 +5,17 @@ import servo as s
 import motors as m
 import actions as a
 import constants as c
-
+import camera as cc
 
 # To Do:
-    #Line follow until robot detects a soda can and pick it up
-    #Camera code
-# HW:
+    #Why does robot go slow after it loses red
+    #Implement serovos with camera code
     #Bumpy
 
 def main():
-    a.canLineFollow()
+    cc.cameraInit()
+    cc.locateObject(50,60, 13)
+    cc.locateObject(20, 80, 3)
 
 
 if __name__ == "__main__":

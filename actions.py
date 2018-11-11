@@ -3,22 +3,24 @@ import servo as s
 import motors as m
 import actions as a
 import constants as c
+import camera as cc
 
 def grabCan():
 
     s.servoInit()
     s.moveServo(c.horizontalServo, c.clawOpen, 10)
-    m.drive(100, 100, 120)
+    m.driveTime(100, 100, 120)
     s.moveServo(c.horizontalServo, c.clawClose, 8)
     s.moveServo(c.verticalServo, c.armHigh, 8)
-    # m.drive(100, 100, 2000)
-    # m.drive(100,0,1200)
-    # m.drive(100, 100, 2000)
+    # m.driveTime(100, 100, 2000)
+    # m.driveTime(100,0,1200)
+    # m.driveTime(100, 100, 2000)
     # s.moveServo(c.verticalServo, c.armMiddle, 5)
     # msleep(500)
     # s.moveServo(c.horizontalServo, c.clawOpen, 5)
-    # m.drive(-100,0,500)
-    # m.drive(-100, -100, 1000)
+    # m.drivTime(-100,0,500)
+    # m.driveTime(-100, -100, 1000)
+
 
 def debug():
     print "debug"
@@ -45,11 +47,13 @@ def canLineFollow():
 
 
 def circle():
-    m.drive(0,100,9000)
-    m.drive(100,0,9000)
+    m.driveTime(0,100,9000)
+    m.driveTime(100,0,9000)
+
+
 def square():
 
-    m.drive(100, 100, 9000)
+    m.driveTime(100, 100, 9000)
 
     motor(0, 100)
     motor(3, 100)
@@ -87,4 +91,4 @@ def square():
     msleep(1500)
     ao()
 
-    m.drive(0, 100, 1500)
+    m.driveTime(0, 100, 1500)
