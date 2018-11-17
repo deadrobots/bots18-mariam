@@ -11,6 +11,9 @@ import camera as cc
     #Why does robot go slow after it loses red
     #Implement serovos with camera code
     #Bumpy
+	
+# Perhaps the robot goes slow after it loses red because you are telling it to find
+# red twice (two calls to locateObject()) and the second call has a slower drive speed -LMB
 
 def main():
     cc.cameraInit()
