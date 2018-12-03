@@ -28,3 +28,5 @@ armLow = 1277
 #yCenter = get_object_center_y(0, 0)
 #cameraWidth = get_camera_width()
 #cameraHeight = get_camera_height()
+
+

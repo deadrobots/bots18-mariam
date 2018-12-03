@@ -17,36 +17,60 @@ myList = [4, 5, 6]
 myList.append(99) # or any number. Adds 99 to the list.
 myList.pop(0) # returns the left-most (first) item in the list. 4, in this case. 
 """
+
+
 def cameraInit():
     camera_open()
 
-# I like the inclusion of a "width" that defines centeredness. -LMB
+
 def locateObject(speed,yTarget,width):
+    camera_update()
     yPosition = 0
     center = 80
     while yPosition < yTarget:
-        [xPosition, yPosition] = xCenter() 	# the [] square-brackets aren't needed for this to work as you're doing. Remove them -LMB
+        camera_update()
+        xPosition, yPosition = xCenter()
         if xPosition == -1:  # does not see red
-            m.drive(30, -30)
+            m.drive(25, -25)
         elif xPosition < center - width:  # red to the left
-            m.drive(0, speed)
+            m.drive(speed/2, speed)
         elif xPosition > center + width:  # red to the right
-            m.drive(speed, 0)
+            m.drive(speed, speed/2)
         else:  # red in the middle
+            msleep(200)
             m.drive(speed, speed)
-    #ao()
+        msleep(50)
+    ao()
 
 
 def xCenter():
-    camera_update()	# Ideally the camera_update() command is called at the beginning of the while loop that uses
-    msleep(20)		# the camera. Also the camera is only updating about every 150ms, so it makes sense to 
-					# msleep() for longer than just 20ms (~10FPS camera = 100ms, but I'm pretty sure 
-					# that the camera actually only gives about ~5FPS, which is a 200ms delay) -LMB
-    if get_object_count(0) == 0:  # no red objects
+    size = get_object_area(0, 0)
+    if get_object_count(0) == 0 or size < 100:  # no red objects
         xPosition = -1
         yPosition = -1
     else:  # sees red objects
         xPosition = get_object_center_x(0, 0)
         yPosition = get_object_center_y(0, 0)
-    print xPosition, yPosition
+    print xPosition, yPosition, size
     return xPosition, yPosition
+
+def locateObject2(speed,yTarget):
+    camera_update()
+    yPosition = 0
+    while yPosition < yTarget:
+        camera_update()
+        xPosition, yPosition = xCenter()
+        if xPosition == -1:  # does not see red
+            m.drive(30, -30)
+        else:
+            msleep(200)
+            lSpeed = (int) (-speed + 1.25 * xPosition)
+            if lSpeed > speed:
+                lSpeed = speed
+            rSpeed = (int) (speed - 1.25 * (xPosition - 80))
+            if rSpeed > speed:
+                rSpeed = speed
+            motor(c.lMotorPort, lSpeed)
+            motor(c.rMotorPort, rSpeed)
+        msleep(50)
+    ao()
