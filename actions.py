@@ -4,28 +4,42 @@ import motors as m
 import actions as a
 import constants as c
 import camera as cc
+import utilities as u
+
 
 def grabCan():
 
     s.servoInit()
-    s.moveServo(c.horizontalServo, c.clawOpen, 10)
-    m.driveTime(100, 100, 120)
+    s.moveServo(c.horizontalServo, c.clawOpen, 8)
+    msleep(50)
     s.moveServo(c.horizontalServo, c.clawClose, 8)
+    msleep(50)
     s.moveServo(c.verticalServo, c.armHigh, 8)
-    # m.driveTime(100, 100, 2000)
-    # m.driveTime(100,0,1200)
-    # m.driveTime(100, 100, 2000)
-    # s.moveServo(c.verticalServo, c.armMiddle, 5)
-    # msleep(500)
-    # s.moveServo(c.horizontalServo, c.clawOpen, 5)
-    # m.drivTime(-100,0,500)
-    # m.driveTime(-100, -100, 1000)
+    msleep(50)
 
 
-def debug():
-    print "debug"
-    while not left_button():
-        pass
+def dropCan():
+    s.moveServo(c.verticalServo, c.armMiddle, 5)
+    msleep(500)
+    s.moveServo(c.horizontalServo, c.clawOpen, 5)
+
+
+def locateCan():
+
+    m.drive(30,30)
+    while analog_et(c.etPort) < 2900:
+        msleep(20)
+        print analog_et(c.etPort)
+    ao()
+    msleep(500)
+
+
+def driveToBump():
+    m.drive(20, 20)
+    yTarget = 25
+    while gyro_y() < yTarget:
+        print gyro_y()
+    ao()
 
 
 def canLineFollow():
@@ -47,8 +61,8 @@ def canLineFollow():
 
 
 def circle():
-    m.driveTime(0,100,9000)
-    m.driveTime(100,0,9000)
+    m.driveTime(0,100,900)
+    m.driveTime(100,0,900)
 
 
 def square():

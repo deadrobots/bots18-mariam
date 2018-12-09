@@ -4,6 +4,8 @@ import motors as m
 import actions as a
 import constants as c
 import camera as cc
+import utilities as u
+
 
 """
 If your camera output is especially "jumpy" or "noisy", then consider making some code to average
@@ -31,21 +33,14 @@ def locateObject(speed,yTarget,width):
         camera_update()
         xPosition, yPosition = xCenter()
         if xPosition == -1:  # does not see red
-            m.drive(25, -25)
+            m.drive(20, -20)
         elif xPosition < center - width:  # red to the left
             m.drive(speed/2, speed)
         elif xPosition > center + width:  # red to the right
             m.drive(speed, speed/2)
         else:  # red in the middle
-            msleep(200) 			# Unsure of what you're going for here. is this msleep()
-            m.drive(speed, speed) 	# supposed to give the camera some time to update? In which
-									# case, it should not be inside this "else", but at the very
-									# end of your loop. Is it here so that you drive straight
-									# forward some ways before checking again? In that case, the 
-									# msleep should happen AFTER the m.drive() (or not at)
-									# all, because you've got an msleep() every iteration of
-									# your loop already -LMB
-        msleep(50)
+            m.drive(speed, speed)
+        msleep(100)
     ao()
 
 
@@ -60,6 +55,7 @@ def xCenter():
     print xPosition, yPosition, size
     return xPosition, yPosition
 
+
 def locateObject2(speed,yTarget):
     camera_update()
     yPosition = 0
@@ -67,9 +63,9 @@ def locateObject2(speed,yTarget):
         camera_update()
         xPosition, yPosition = xCenter()
         if xPosition == -1:  # does not see red
-            m.drive(30, -30)
+            m.drive(20, -20)
         else:
-            msleep(200)
+            # msleep(200)
             lSpeed = (int) (-speed + 1.25 * xPosition)
             if lSpeed > speed:
                 lSpeed = speed

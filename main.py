@@ -6,6 +6,7 @@ import motors as m
 import actions as a
 import constants as c
 import camera as cc
+import utilities as u
 
 # To Do:
 
@@ -13,13 +14,18 @@ import camera as cc
     #Bumpy
 
 def main():
-    cc.cameraInit()
-    cc.locateObject2(50,60)
-    print "press l button"
-    while not left_button():
-        pass
-    cc.locateObject2(20, 80)
 
+    # cc.cameraInit()
+    # s.servoInit()
+    # cc.locateObject2(50, 60)
+    # u.wait()
+    # cc.locateObject2(20, 80)
+    # u.wait()
+    # a.locateCan()
+    # u.wait()
+    # a.grabCan()
+
+    a.driveToBump()
 
 if __name__ == "__main__":
     sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 0)
