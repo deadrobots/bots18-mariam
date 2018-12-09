@@ -37,8 +37,14 @@ def locateObject(speed,yTarget,width):
         elif xPosition > center + width:  # red to the right
             m.drive(speed, speed/2)
         else:  # red in the middle
-            msleep(200)
-            m.drive(speed, speed)
+            msleep(200) 			# Unsure of what you're going for here. is this msleep()
+            m.drive(speed, speed) 	# supposed to give the camera some time to update? In which
+									# case, it should not be inside this "else", but at the very
+									# end of your loop. Is it here so that you drive straight
+									# forward some ways before checking again? In that case, the 
+									# msleep should happen AFTER the m.drive() (or not at)
+									# all, because you've got an msleep() every iteration of
+									# your loop already -LMB
         msleep(50)
     ao()
 
