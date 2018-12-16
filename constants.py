@@ -6,6 +6,7 @@ import constants as c
 import camera as cc
 import utilities as u
 
+
 #Ports
 rMotorPort = 0
 lMotorPort = 3
@@ -15,6 +16,7 @@ horizontalServo = 2
 
 tophatPort = 0
 etPort = 5
+
 
 #Servo Values
 clawOpen = 100

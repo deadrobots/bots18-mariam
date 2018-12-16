@@ -28,5 +28,3 @@ def moveServo (servoPort, newPosition, speed):
             set_servo_position(servoPort,currentPosition)
             msleep(5)
         set_servo_position(servoPort, newPosition)
-
-

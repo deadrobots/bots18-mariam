@@ -35,9 +35,9 @@ def locateCan():
 
 
 def driveToBump():
-    m.drive(20, 20)
-    yTarget = 25
+    yTarget = 100
     while gyro_y() < yTarget:
+        m.drive(50, 50)
         print gyro_y()
     ao()
 
@@ -106,3 +106,4 @@ def square():
     ao()
 
     m.driveTime(0, 100, 1500)
+

@@ -21,6 +21,8 @@ myList.pop(0) # returns the left-most (first) item in the list. 4, in this case.
 """
 
 
+
+
 def cameraInit():
     camera_open()
 
@@ -32,13 +34,13 @@ def locateObject(speed,yTarget,width):
     while yPosition < yTarget:
         camera_update()
         xPosition, yPosition = xCenter()
-        if xPosition == -1:  # does not see red
+        if xPosition == -1:                 # does not see red
             m.drive(20, -20)
-        elif xPosition < center - width:  # red to the left
+        elif xPosition < center - width:   # red to the left
             m.drive(speed/2, speed)
         elif xPosition > center + width:  # red to the right
             m.drive(speed, speed/2)
-        else:  # red in the middle
+        else:                              # red in the middle
             m.drive(speed, speed)
         msleep(100)
     ao()
@@ -65,7 +67,7 @@ def locateObject2(speed,yTarget):
         if xPosition == -1:  # does not see red
             m.drive(20, -20)
         else:
-            # msleep(200)
+            msleep(150)
             lSpeed = (int) (-speed + 1.25 * xPosition)
             if lSpeed > speed:
                 lSpeed = speed
@@ -76,3 +78,4 @@ def locateObject2(speed,yTarget):
             motor(c.rMotorPort, rSpeed)
         msleep(50)
     ao()
+
